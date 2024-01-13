@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjmt2r124lvoq"]
+
+[ext_resource type="Script" path="res://addons/hypercomic/panel_info.gd" id="1_8a0c1"]
+
+[node name="panel_info" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_8a0c1")
+pi_index = "0"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+border_color = Color(0, 0, 0, 0)
+
+[node name="index" type="Label" parent="ReferenceRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -11.5
+offset_right = 5.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="nmlbl" type="Label" parent="."]
+layout_mode = 2
+text = "Name: "
+
+[node name="name" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "{name}"
+scroll_fit_content_height = true
+
+[node name="nmlbl2" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "  Scene: "
+
+[node name="scene" type="TextEdit" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "{scene}"
+scroll_fit_content_height = true
+
+[node name="up" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<<"
+
+[node name="down" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">>"
+
+[node name="remove" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+
+[connection signal="text_changed" from="name" to="." method="_on_name_text_changed"]
+[connection signal="text_changed" from="scene" to="." method="_on_scene_text_changed"]
+[connection signal="button_down" from="up" to="." method="_on_up_button_down"]
+[connection signal="button_down" from="down" to="." method="_on_down_button_down"]
+[connection signal="pressed" from="remove" to="." method="_on_remove_pressed"]

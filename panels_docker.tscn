@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd8bols5qkkec"]
+
+[ext_resource type="Script" path="res://addons/hypercomic/panels_docker.gd" id="1_balcl"]
+
+[node name="Panels" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_balcl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Start Panel: "
+
+[node name="start_panel_menu" type="MenuButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[null]"
+item_count = 1
+popup/item_0/text = "[null]"
+popup/item_0/id = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="item_list" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Button" to="." method="_on_add_item_pressed"]
